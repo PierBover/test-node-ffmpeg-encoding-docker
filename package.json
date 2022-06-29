@@ -1,0 +1,25 @@
+{
+  "name": "test-node-ffmpeg-encoding-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PierBover/test-node-ffmpeg-encoding-docker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PierBover/test-node-ffmpeg-encoding-docker/issues"
+  },
+  "homepage": "https://github.com/PierBover/test-node-ffmpeg-encoding-docker#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}

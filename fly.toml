@@ -1,0 +1,14 @@
+# fly.toml file generated for dark-wildflower-7058 on 2022-06-28T21:31:12-05:00
+
+app = "dark-wildflower-7058"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[env]
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
