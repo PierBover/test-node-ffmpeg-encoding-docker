@@ -1,8 +1,12 @@
-FROM node:18-alpine3.15
+FROM ubuntu:latest
 
 USER root
 
-RUN apk add -u ffmpeg
+RUN apt update
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+RUN apt -y install nodejs
+RUN apt -y install npm
+RUN apt -y install ffmpeg
 
 WORKDIR /usr/src/app
 
