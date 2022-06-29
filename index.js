@@ -1,4 +1,9 @@
 import {spawn} from 'child_process';
+import fs from 'fs';
+import Fastify from 'fastify';
+
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || '127.0.0.1';
 
 async function encodeMp3 (originPath, targetPath) {
 	try {
@@ -41,19 +46,34 @@ function spawnAsync (command, params, ignoreStdError = false) {
 	});
 }
 
-async function work () {
+async function encodeTestAudio () {
+	if (fs.existsSync('test.mp3')) fs.unlinkSync('test.mp3');
+	await encodeMp3('test.wav', 'test.mp3');
+}
+
+const fastify = Fastify({logger: true});
+
+fastify.get('/encode', async function (request, reply) {
 	const start = new Date();
 	console.log('start time', start);
 
-	await encodeMp3('test.wav', 'test.mp3');
-
+	await encodeTestAudio();
 
 	const end = new Date();
 	console.log('end time', end);
-
 	const totalTime = (end.getTime() - start.getTime()) / 1000;
-
 	console.log('total time', totalTime, 'seconds');
-}
 
-work();
+	reply.send({
+		startTime: start,
+		endTime: end,
+		totalTimeSeconds: totalTime
+	});
+})
+
+fastify.listen({port, host}, function (err, address) {
+	if (err) {
+		fastify.log.error(err);
+		process.exit(1);
+	}
+});

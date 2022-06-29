@@ -21,5 +21,8 @@
   "homepage": "https://github.com/PierBover/test-node-ffmpeg-encoding-docker#readme",
   "devDependencies": {
     "nodemon": "^2.0.18"
+  },
+  "dependencies": {
+    "fastify": "^4.2.0"
   }
 }
