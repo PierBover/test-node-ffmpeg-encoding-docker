@@ -2,7 +2,7 @@ import {spawn} from 'child_process';
 
 async function encodeMp3 (originPath, targetPath) {
 	try {
-		const params = ['-i', originPath, '-c:a', 'libmp3lame', '-b:a', '192k', '-ar', '44100', '-loglevel', 'error', targetPath];
+		const params = ['-y', '-i', originPath, '-c:a', 'libmp3lame', '-b:a', '192k', '-ar', '44100', '-loglevel', 'error', targetPath];
 		await spawnAsync('ffmpeg', params);
 	} catch (error) {
 		console.log(error);
