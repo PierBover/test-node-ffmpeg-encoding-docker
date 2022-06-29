@@ -1,12 +1,8 @@
-FROM ubuntu:latest
+FROM node:18-alpine3.15
 
 USER root
 
-RUN apt update
-RUN apt -y install --no-install-recommends curl
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
-RUN apt -y install --no-install-recommends nodejs
-RUN apt -y install --no-install-recommends ffmpeg
+RUN apk add -u ffmpeg
 
 WORKDIR /usr/src/app
 
@@ -19,4 +15,4 @@ ENV NODE_ENV production
 ENV PORT 8080
 ENV HOST 0.0.0.0
 
-CMD node index.js
+CMD ["node", "index.js"]
